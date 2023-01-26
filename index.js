@@ -10,7 +10,7 @@ dotenv.config();
 
 const PORT = process.env.PORT || 3030;
 const CREDENTIAL = JSON.parse(process.env.CREDENTIAL);
-const mysqlTable = "MOCK_DATA2";
+const mysqlTable = "MOCK_DATA";
 
 const db = mysql.createConnection(CREDENTIAL);
 
@@ -68,7 +68,9 @@ app.post("/post", (req, res) => {
 
 // Send Query
 db.query(query, parameter, (err, result) => {
-    if(err) { process.exit(1)}
+    if(err) { 
+        console.error(err)
+        process.exit(1)}
 
     // Result
     console.log(result);
