@@ -78,6 +78,23 @@ db.query(query, parameter, (err, result) => {
 })
 })
 
+// Delete
+app.delete("/delete", (req, res) => {
+    const parameter = req.body
+    const query = `DELETE * FROM ${mysqlTable}`
+
+// Send Query
+db.query(query, parameter, (err, result) => {
+    if(err) {
+        console.error(err);
+        process.exit(1);
+    }
+    // Result
+    console.log(result);
+    res.send("Post Deleted");
+})
+})
+
 
 app.listen(PORT, () => {
     console.log(`Listening on http://localhost:${PORT}`);
